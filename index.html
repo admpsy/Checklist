@@ -940,13 +940,84 @@
         let checklists = [];
         let signaturePadRecebimento, signaturePadExpedicao;
         
+        // ===============================
+        // ARMAZENAMENTO LOCAL (localStorage)
+        // ===============================
+        
         // Chave para armazenamento local
         const STORAGE_KEY = 'checklistDigitalData';
+       
+        // Função para salvar dados no localStorage
+           function saveToLocalStorage() {
+           try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(checklists));
+        console.log('Dados salvos no localStorage. Total de checklists:', checklists.length);
+        return true;
+    } catch (e) {
+        console.error('Erro ao salvar no localStorage:', e);
+        showNotification('Erro ao salvar dados localmente. Os dados podem ser perdidos ao fechar o navegador.', 'error');
+        return false;
+    }
+}
+
+// Função para carregar dados do localStorage
+function loadFromLocalStorage() {
+    try {
+        const savedData = localStorage.getItem(STORAGE_KEY);
+        if (savedData) {
+            checklists = JSON.parse(savedData);
+            console.log('Dados carregados do localStorage. Total de checklists:', checklists.length);
+            return true;
+        } else {
+            console.log('Nenhum dado encontrado no localStorage. Iniciando com array vazio.');
+            checklists = [];
+            return true;
+        }
+    } catch (e) {
+        console.error('Erro ao carregar do localStorage:', e);
+        showNotification('Erro ao carregar dados salvos. Iniciando com dados vazios.', 'error');
+        checklists = [];
+        return false;
+    }
+}
+
+// Função para verificar o espaço disponível no localStorage
+function checkLocalStorageSpace() {
+    try {
+        let data = '';
+        for (let i = 0; i < 1024 * 1024; i++) { // 1MB
+            data += 'a';
+        }
+        localStorage.setItem('test', data);
+        localStorage.removeItem('test');
+        return true;
+    } catch (e) {
+        console.warn('LocalStorage está cheio ou não suportado');
+        return false;
+    }
+}
+
+// Função para limpar dados antigos (manter apenas os últimos 100 checklists)
+function cleanupOldData() {
+    if (checklists.length > 100) {
+        // Ordenar por timestamp (mais recentes primeiro) e manter apenas os 100 mais recentes
+        checklists.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+        checklists = checklists.slice(0, 100);
+        saveToLocalStorage();
+        console.log('Dados antigos limpos. Mantidos os 100 checklists mais recentes.');
+    }
+}
+
         
         // Inicialização após o carregamento da página
         document.addEventListener('DOMContentLoaded', function() {
             // Carregar dados do localStorage
             loadFromLocalStorage();
+
+             // Resto da inicialização...
+                initializeSignaturePads();
+                setupEventListeners();
+                updateHistoryList();
             
             // Inicializar as áreas de assinatura
             initializeSignaturePads();
