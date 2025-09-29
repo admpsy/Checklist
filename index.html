@@ -470,7 +470,8 @@
                 </div>
             </div>
             
-            <div class="form-section">
+            <!-- Seção de Inspeção da Carga (Recebimento) -->
+            <div class="form-section" id="secao-inspecao-carga">
                 <h3>Inspeção da Carga</h3>
                 <div id="inspecao-contentores">
                     <h4>Para Contentores</h4>
@@ -479,12 +480,12 @@
                             <label>As eslingas estão livres de torções ou dobras?</label>
                             <div class="radio-group">
                                 <div class="radio-option">
-                                    <input type="radio" id="eslingas-sim" name="eslingas" value="SIM">
-                                    <label for="eslingas-sim">SIM</label>
+                                    <input type="radio" id="eslingas-rec-sim" name="eslingas-rec" value="SIM">
+                                    <label for="eslingas-rec-sim">SIM</label>
                                 </div>
                                 <div class="radio-option">
-                                    <input type="radio" id="eslingas-nao" name="eslingas" value="NÃO">
-                                    <label for="eslingas-nao">NÃO</label>
+                                    <input type="radio" id="eslingas-rec-nao" name="eslingas-rec" value="NÃO">
+                                    <label for="eslingas-rec-nao">NÃO</label>
                                 </div>
                             </div>
                         </div>
@@ -492,12 +493,12 @@
                             <label>O contentor está livre de objetos soltos, que podem cair durante a movimentação de carga?</label>
                             <div class="radio-group">
                                 <div class="radio-option">
-                                    <input type="radio" id="objetos-soltos-sim" name="objetos-soltos" value="SIM">
-                                    <label for="objetos-soltos-sim">SIM</label>
+                                    <input type="radio" id="objetos-soltos-rec-sim" name="objetos-soltos-rec" value="SIM">
+                                    <label for="objetos-soltos-rec-sim">SIM</label>
                                 </div>
                                 <div class="radio-option">
-                                    <input type="radio" id="objetos-soltos-nao" name="objetos-soltos" value="NÃO">
-                                    <label for="objetos-soltos-nao">NÃO</label>
+                                    <input type="radio" id="objetos-soltos-rec-nao" name="objetos-soltos-rec" value="NÃO">
+                                    <label for="objetos-soltos-rec-nao">NÃO</label>
                                 </div>
                             </div>
                         </div>
@@ -505,12 +506,12 @@
                             <label>O contentor está livre de sinais de vazamento?</label>
                             <div class="radio-group">
                                 <div class="radio-option">
-                                    <input type="radio" id="sinais-vazamento-sim" name="sinais-vazamento" value="SIM">
-                                    <label for="sinais-vazamento-sim">SIM</label>
+                                    <input type="radio" id="sinais-vazamento-rec-sim" name="sinais-vazamento-rec" value="SIM">
+                                    <label for="sinais-vazamento-rec-sim">SIM</label>
                                 </div>
                                 <div class="radio-option">
-                                    <input type="radio" id="sinais-vazamento-nao" name="sinais-vazamento" value="NÃO">
-                                    <label for="sinais-vazamento-nao">NÃO</label>
+                                    <input type="radio" id="sinais-vazamento-rec-nao" name="sinais-vazamento-rec" value="NÃO">
+                                    <label for="sinais-vazamento-rec-nao">NÃO</label>
                                 </div>
                             </div>
                         </div>
@@ -518,12 +519,12 @@
                             <label>A tampa está devidamente fechada?</label>
                             <div class="radio-group">
                                 <div class="radio-option">
-                                    <input type="radio" id="tampa-fechada-sim" name="tampa-fechada" value="SIM">
-                                    <label for="tampa-fechada-sim">SIM</label>
+                                    <input type="radio" id="tampa-fechada-rec-sim" name="tampa-fechada-rec" value="SIM">
+                                    <label for="tampa-fechada-rec-sim">SIM</label>
                                 </div>
                                 <div class="radio-option">
-                                    <input type="radio" id="tampa-fechada-nao" name="tampa-fechada" value="NÃO">
-                                    <label for="tampa-fechada-nao">NÃO</label>
+                                    <input type="radio" id="tampa-fechada-rec-nao" name="tampa-fechada-rec" value="NÃO">
+                                    <label for="tampa-fechada-rec-nao">NÃO</label>
                                 </div>
                             </div>
                         </div>
@@ -531,12 +532,12 @@
                             <label>As válvulas estão fechadas e lacradas?</label>
                             <div class="radio-group">
                                 <div class="radio-option">
-                                    <input type="radio" id="valvulas-fechadas-sim" name="valvulas-fechadas" value="SIM">
-                                    <label for="valvulas-fechadas-sim">SIM</label>
+                                    <input type="radio" id="valvulas-fechadas-rec-sim" name="valvulas-fechadas-rec" value="SIM">
+                                    <label for="valvulas-fechadas-rec-sim">SIM</label>
                                 </div>
                                 <div class="radio-option">
-                                    <input type="radio" id="valvulas-fechadas-nao" name="valvulas-fechadas" value="NÃO">
-                                    <label for="valvulas-fechadas-nao">NÃO</label>
+                                    <input type="radio" id="valvulas-fechadas-rec-nao" name="valvulas-fechadas-rec" value="NÃO">
+                                    <label for="valvulas-fechadas-rec-nao">NÃO</label>
                                 </div>
                             </div>
                         </div>
@@ -544,12 +545,12 @@
                             <label>A validade dos testes (carga/hidrostático) é superior a 90 dias?</label>
                             <div class="radio-group">
                                 <div class="radio-option">
-                                    <input type="radio" id="validade-testes-sim" name="validade-testes" value="SIM">
-                                    <label for="validade-testes-sim">SIM</label>
+                                    <input type="radio" id="validade-testes-rec-sim" name="validade-testes-rec" value="SIM">
+                                    <label for="validade-testes-rec-sim">SIM</label>
                                 </div>
                                 <div class="radio-option">
-                                    <input type="radio" id="validade-testes-nao" name="validade-testes" value="NÃO">
-                                    <label for="validade-testes-nao">NÃO</label>
+                                    <input type="radio" id="validade-testes-rec-nao" name="validade-testes-rec" value="NÃO">
+                                    <label for="validade-testes-rec-nao">NÃO</label>
                                 </div>
                             </div>
                         </div>
@@ -557,12 +558,12 @@
                             <label>As etiquetas de identificação estão em bom estado?</label>
                             <div class="radio-group">
                                 <div class="radio-option">
-                                    <input type="radio" id="etiquetas-identificacao-sim" name="etiquetas-identificacao" value="SIM">
-                                    <label for="etiquetas-identificacao-sim">SIM</label>
+                                    <input type="radio" id="etiquetas-identificacao-rec-sim" name="etiquetas-identificacao-rec" value="SIM">
+                                    <label for="etiquetas-identificacao-rec-sim">SIM</label>
                                 </div>
                                 <div class="radio-option">
-                                    <input type="radio" id="etiquetas-identificacao-nao" name="etiquetas-identificacao" value="NÃO">
-                                    <label for="etiquetas-identificacao-nao">NÃO</label>
+                                    <input type="radio" id="etiquetas-identificacao-rec-nao" name="etiquetas-identificacao-rec" value="NÃO">
+                                    <label for="etiquetas-identificacao-rec-nao">NÃO</label>
                                 </div>
                             </div>
                         </div>
@@ -570,12 +571,12 @@
                             <label>Lacres Intactos?</label>
                             <div class="radio-group">
                                 <div class="radio-option">
-                                    <input type="radio" id="lacres-intactos-sim" name="lacres-intactos" value="SIM">
-                                    <label for="lacres-intactos-sim">SIM</label>
+                                    <input type="radio" id="lacres-intactos-rec-sim" name="lacres-intactos-rec" value="SIM">
+                                    <label for="lacres-intactos-rec-sim">SIM</label>
                                 </div>
                                 <div class="radio-option">
-                                    <input type="radio" id="lacres-intactos-nao" name="lacres-intactos" value="NÃO">
-                                    <label for="lacres-intactos-nao">NÃO</label>
+                                    <input type="radio" id="lacres-intactos-rec-nao" name="lacres-intactos-rec" value="NÃO">
+                                    <label for="lacres-intactos-rec-nao">NÃO</label>
                                 </div>
                             </div>
                         </div>
@@ -589,12 +590,12 @@
                             <label>As etiquetas estão legíveis e firmemente fixadas?</label>
                             <div class="radio-group">
                                 <div class="radio-option">
-                                    <input type="radio" id="etiquetas-legiveis-sim" name="etiquetas-legiveis" value="SIM">
-                                    <label for="etiquetas-legiveis-sim">SIM</label>
+                                    <input type="radio" id="etiquetas-legiveis-rec-sim" name="etiquetas-legiveis-rec" value="SIM">
+                                    <label for="etiquetas-legiveis-rec-sim">SIM</label>
                                 </div>
                                 <div class="radio-option">
-                                    <input type="radio" id="etiquetas-legiveis-nao" name="etiquetas-legiveis" value="NÃO">
-                                    <label for="etiquetas-legiveis-nao">NÃO</label>
+                                    <input type="radio" id="etiquetas-legiveis-rec-nao" name="etiquetas-legiveis-rec" value="NÃO">
+                                    <label for="etiquetas-legiveis-rec-nao">NÃO</label>
                                 </div>
                             </div>
                         </div>
@@ -602,12 +603,12 @@
                             <label>Os recipientes estão limpos e livres de amassamentos?</label>
                             <div class="radio-group">
                                 <div class="radio-option">
-                                    <input type="radio" id="recipientes-limpos-sim" name="recipientes-limpos" value="SIM">
-                                    <label for="recipientes-limpos-sim">SIM</label>
+                                    <input type="radio" id="recipientes-limpos-rec-sim" name="recipientes-limpos-rec" value="SIM">
+                                    <label for="recipientes-limpos-rec-sim">SIM</label>
                                 </div>
                                 <div class="radio-option">
-                                    <input type="radio" id="recipientes-limpos-nao" name="recipientes-limpos" value="NÃO">
-                                    <label for="recipientes-limpos-nao">NÃO</label>
+                                    <input type="radio" id="recipientes-limpos-rec-nao" name="recipientes-limpos-rec" value="NÃO">
+                                    <label for="recipientes-limpos-rec-nao">NÃO</label>
                                 </div>
                             </div>
                         </div>
@@ -615,12 +616,12 @@
                             <label>A quantidade recebida confere com a nota fiscal?</label>
                             <div class="radio-group">
                                 <div class="radio-option">
-                                    <input type="radio" id="quantidade-conferente-sim" name="quantidade-conferente" value="SIM">
-                                    <label for="quantidade-conferente-sim">SIM</label>
+                                    <input type="radio" id="quantidade-conferente-rec-sim" name="quantidade-conferente-rec" value="SIM">
+                                    <label for="quantidade-conferente-rec-sim">SIM</label>
                                 </div>
                                 <div class="radio-option">
-                                    <input type="radio" id="quantidade-conferente-nao" name="quantidade-conferente" value="NÃO">
-                                    <label for="quantidade-conferente-nao">NÃO</label>
+                                    <input type="radio" id="quantidade-conferente-rec-nao" name="quantidade-conferente-rec" value="NÃO">
+                                    <label for="quantidade-conferente-rec-nao">NÃO</label>
                                 </div>
                             </div>
                         </div>
@@ -628,12 +629,12 @@
                             <label>Há sinais de vazamento ou corrosão?</label>
                             <div class="radio-group">
                                 <div class="radio-option">
-                                    <input type="radio" id="sinais-vazamento-corrosao-sim" name="sinais-vazamento-corrosao" value="SIM">
-                                    <label for="sinais-vazamento-corrosao-sim">SIM</label>
+                                    <input type="radio" id="sinais-vazamento-corrosao-rec-sim" name="sinais-vazamento-corrosao-rec" value="SIM">
+                                    <label for="sinais-vazamento-corrosao-rec-sim">SIM</label>
                                 </div>
                                 <div class="radio-option">
-                                    <input type="radio" id="sinais-vazamento-corrosao-nao" name="sinais-vazamento-corrosao" value="NÃO">
-                                    <label for="sinais-vazamento-corrosao-nao">NÃO</label>
+                                    <input type="radio" id="sinais-vazamento-corrosao-rec-nao" name="sinais-vazamento-corrosao-rec" value="NÃO">
+                                    <label for="sinais-vazamento-corrosao-rec-nao">NÃO</label>
                                 </div>
                             </div>
                         </div>
@@ -641,7 +642,8 @@
                 </div>
             </div>
             
-            <div class="form-section">
+            <!-- Seção de Inspeção Pré-Expedição -->
+            <div class="form-section" id="secao-inspecao-expedicao" style="display: none;">
                 <h3>Inspeção Pré-Expedição</h3>
                 <div id="inspecao-exp-contentores">
                     <h4>Para Contentores</h4>
@@ -650,12 +652,12 @@
                             <label>O contentor está limpo e seco internamente?</label>
                             <div class="radio-group">
                                 <div class="radio-option">
-                                    <input type="radio" id="contentor-limpo-sim" name="contentor-limpo" value="SIM">
-                                    <label for="contentor-limpo-sim">SIM</label>
+                                    <input type="radio" id="contentor-limpo-exp-sim" name="contentor-limpo-exp" value="SIM">
+                                    <label for="contentor-limpo-exp-sim">SIM</label>
                                 </div>
                                 <div class="radio-option">
-                                    <input type="radio" id="contentor-limpo-nao" name="contentor-limpo" value="NÃO">
-                                    <label for="contentor-limpo-nao">NÃO</label>
+                                    <input type="radio" id="contentor-limpo-exp-nao" name="contentor-limpo-exp" value="NÃO">
+                                    <label for="contentor-limpo-exp-nao">NÃO</label>
                                 </div>
                             </div>
                         </div>
@@ -663,12 +665,12 @@
                             <label>Todas as tampas e válvulas estão perfeitamente fechadas?</label>
                             <div class="radio-group">
                                 <div class="radio-option">
-                                    <input type="radio" id="tampas-valvulas-fechadas-sim" name="tampas-valvulas-fechadas" value="SIM">
-                                    <label for="tampas-valvulas-fechadas-sim">SIM</label>
+                                    <input type="radio" id="tampas-valvulas-fechadas-exp-sim" name="tampas-valvulas-fechadas-exp" value="SIM">
+                                    <label for="tampas-valvulas-fechadas-exp-sim">SIM</label>
                                 </div>
                                 <div class="radio-option">
-                                    <input type="radio" id="tampas-valvulas-fechadas-nao" name="tampas-valvulas-fechadas" value="NÃO">
-                                    <label for="tampas-valvulas-fechadas-nao">NÃO</label>
+                                    <input type="radio" id="tampas-valvulas-fechadas-exp-nao" name="tampas-valvulas-fechadas-exp" value="NÃO">
+                                    <label for="tampas-valvulas-fechadas-exp-nao">NÃO</label>
                                 </div>
                             </div>
                         </div>
@@ -676,12 +678,12 @@
                             <label>Os lacres de segurança estão aplicados e intactos?</label>
                             <div class="radio-group">
                                 <div class="radio-option">
-                                    <input type="radio" id="lacres-seguranca-sim" name="lacres-seguranca" value="SIM">
-                                    <label for="lacres-seguranca-sim">SIM</label>
+                                    <input type="radio" id="lacres-seguranca-exp-sim" name="lacres-seguranca-exp" value="SIM">
+                                    <label for="lacres-seguranca-exp-sim">SIM</label>
                                 </div>
                                 <div class="radio-option">
-                                    <input type="radio" id="lacres-seguranca-nao" name="lacres-seguranca" value="NÃO">
-                                    <label for="lacres-seguranca-nao">NÃO</label>
+                                    <input type="radio" id="lacres-seguranca-exp-nao" name="lacres-seguranca-exp" value="NÃO">
+                                    <label for="lacres-seguranca-exp-nao">NÃO</label>
                                 </div>
                             </div>
                         </div>
@@ -689,12 +691,12 @@
                             <label>As etiquetas de risco e identificação do produto estão corretas e visíveis?</label>
                             <div class="radio-group">
                                 <div class="radio-option">
-                                    <input type="radio" id="etiquetas-risco-sim" name="etiquetas-risco" value="SIM">
-                                    <label for="etiquetas-risco-sim">SIM</label>
+                                    <input type="radio" id="etiquetas-risco-exp-sim" name="etiquetas-risco-exp" value="SIM">
+                                    <label for="etiquetas-risco-exp-sim">SIM</label>
                                 </div>
                                 <div class="radio-option">
-                                    <input type="radio" id="etiquetas-risco-nao" name="etiquetas-risco" value="NÃO">
-                                    <label for="etiquetas-risco-nao">NÃO</label>
+                                    <input type="radio" id="etiquetas-risco-exp-nao" name="etiquetas-risco-exp" value="NÃO">
+                                    <label for="etiquetas-risco-exp-nao">NÃO</label>
                                 </div>
                             </div>
                         </div>
@@ -702,12 +704,12 @@
                             <label>A documentação (ficha de emergência, etc.) está acomodada no local adequado?</label>
                             <div class="radio-group">
                                 <div class="radio-option">
-                                    <input type="radio" id="documentacao-acomodada-sim" name="documentacao-acomodada" value="SIM">
-                                    <label for="documentacao-acomodada-sim">SIM</label>
+                                    <input type="radio" id="documentacao-acomodada-exp-sim" name="documentacao-acomodada-exp" value="SIM">
+                                    <label for="documentacao-acomodada-exp-sim">SIM</label>
                                 </div>
                                 <div class="radio-option">
-                                    <input type="radio" id="documentacao-acomodada-nao" name="documentacao-acomodada" value="NÃO">
-                                    <label for="documentacao-acomodada-nao">NÃO</label>
+                                    <input type="radio" id="documentacao-acomodada-exp-nao" name="documentacao-acomodada-exp" value="NÃO">
+                                    <label for="documentacao-acomodada-exp-nao">NÃO</label>
                                 </div>
                             </div>
                         </div>
@@ -721,12 +723,12 @@
                             <label>As etiquetas estão legíveis e firmemente fixadas?</label>
                             <div class="radio-group">
                                 <div class="radio-option">
-                                    <input type="radio" id="etiquetas-exp-legiveis-sim" name="etiquetas-exp-legiveis" value="SIM">
-                                    <label for="etiquetas-exp-legiveis-sim">SIM</label>
+                                    <input type="radio" id="etiquetas-legiveis-exp-sim" name="etiquetas-legiveis-exp" value="SIM">
+                                    <label for="etiquetas-legiveis-exp-sim">SIM</label>
                                 </div>
                                 <div class="radio-option">
-                                    <input type="radio" id="etiquetas-exp-legiveis-nao" name="etiquetas-exp-legiveis" value="NÃO">
-                                    <label for="etiquetas-exp-legiveis-nao">NÃO</label>
+                                    <input type="radio" id="etiquetas-legiveis-exp-nao" name="etiquetas-legiveis-exp" value="NÃO">
+                                    <label for="etiquetas-legiveis-exp-nao">NÃO</label>
                                 </div>
                             </div>
                         </div>
@@ -734,12 +736,12 @@
                             <label>Os recipientes estão estáveis e paletizados corretamente?</label>
                             <div class="radio-group">
                                 <div class="radio-option">
-                                    <input type="radio" id="recipientes-estaveis-sim" name="recipientes-estaveis" value="SIM">
-                                    <label for="recipientes-estaveis-sim">SIM</label>
+                                    <input type="radio" id="recipientes-estaveis-exp-sim" name="recipientes-estaveis-exp" value="SIM">
+                                    <label for="recipientes-estaveis-exp-sim">SIM</label>
                                 </div>
                                 <div class="radio-option">
-                                    <input type="radio" id="recipientes-estaveis-nao" name="recipientes-estaveis" value="NÃO">
-                                    <label for="recipientes-estaveis-nao">NÃO</label>
+                                    <input type="radio" id="recipientes-estaveis-exp-nao" name="recipientes-estaveis-exp" value="NÃO">
+                                    <label for="recipientes-estaveis-exp-nao">NÃO</label>
                                 </div>
                             </div>
                         </div>
@@ -747,12 +749,12 @@
                             <label>Há danos que possam comprometer o transporte?</label>
                             <div class="radio-group">
                                 <div class="radio-option">
-                                    <input type="radio" id="danos-transporte-sim" name="danos-transporte" value="SIM">
-                                    <label for="danos-transporte-sim">SIM</label>
+                                    <input type="radio" id="danos-transporte-exp-sim" name="danos-transporte-exp" value="SIM">
+                                    <label for="danos-transporte-exp-sim">SIM</label>
                                 </div>
                                 <div class="radio-option">
-                                    <input type="radio" id="danos-transporte-nao" name="danos-transporte" value="NÃO">
-                                    <label for="danos-transporte-nao">NÃO</label>
+                                    <input type="radio" id="danos-transporte-exp-nao" name="danos-transporte-exp" value="NÃO">
+                                    <label for="danos-transporte-exp-nao">NÃO</label>
                                 </div>
                             </div>
                         </div>
@@ -760,12 +762,12 @@
                             <label>A quantidade a ser expedida confere com o pedido?</label>
                             <div class="radio-group">
                                 <div class="radio-option">
-                                    <input type="radio" id="quantidade-expedida-sim" name="quantidade-expedida" value="SIM">
-                                    <label for="quantidade-expedida-sim">SIM</label>
+                                    <input type="radio" id="quantidade-expedida-exp-sim" name="quantidade-expedida-exp" value="SIM">
+                                    <label for="quantidade-expedida-exp-sim">SIM</label>
                                 </div>
                                 <div class="radio-option">
-                                    <input type="radio" id="quantidade-expedida-nao" name="quantidade-expedida" value="NÃO">
-                                    <label for="quantidade-expedida-nao">NÃO</label>
+                                    <input type="radio" id="quantidade-expedida-exp-nao" name="quantidade-expedida-exp" value="NÃO">
+                                    <label for="quantidade-expedida-exp-nao">NÃO</label>
                                 </div>
                             </div>
                         </div>
@@ -887,85 +889,48 @@
         let checklists = [];
         let signaturePad;
         
-        // ===============================
-        // ARMAZENAMENTO LOCAL (localStorage)
-        // ===============================
-        
         // Chave para armazenamento local
         const STORAGE_KEY = 'checklistDigitalData';
        
         // Função para salvar dados no localStorage
-           function saveToLocalStorage() {
-           try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(checklists));
-        console.log('Dados salvos no localStorage. Total de checklists:', checklists.length);
-        return true;
-    } catch (e) {
-        console.error('Erro ao salvar no localStorage:', e);
-        showNotification('Erro ao salvar dados localmente. Os dados podem ser perdidos ao fechar o navegador.', 'error');
-        return false;
-    }
-}
-
-// Função para carregar dados do localStorage
-function loadFromLocalStorage() {
-    try {
-        const savedData = localStorage.getItem(STORAGE_KEY);
-        if (savedData) {
-            checklists = JSON.parse(savedData);
-            console.log('Dados carregados do localStorage. Total de checklists:', checklists.length);
-            return true;
-        } else {
-            console.log('Nenhum dado encontrado no localStorage. Iniciando com array vazio.');
-            checklists = [];
-            return true;
+        function saveToLocalStorage() {
+            try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(checklists));
+                console.log('Dados salvos no localStorage. Total de checklists:', checklists.length);
+                return true;
+            } catch (e) {
+                console.error('Erro ao salvar no localStorage:', e);
+                showNotification('Erro ao salvar dados localmente. Os dados podem ser perdidos ao fechar o navegador.', 'error');
+                return false;
+            }
         }
-    } catch (e) {
-        console.error('Erro ao carregar do localStorage:', e);
-        showNotification('Erro ao carregar dados salvos. Iniciando com dados vazios.', 'error');
-        checklists = [];
-        return false;
-    }
-}
 
-// Função para verificar o espaço disponível no localStorage
-function checkLocalStorageSpace() {
-    try {
-        let data = '';
-        for (let i = 0; i < 1024 * 1024; i++) { // 1MB
-            data += 'a';
+        // Função para carregar dados do localStorage
+        function loadFromLocalStorage() {
+            try {
+                const savedData = localStorage.getItem(STORAGE_KEY);
+                if (savedData) {
+                    checklists = JSON.parse(savedData);
+                    console.log('Dados carregados do localStorage. Total de checklists:', checklists.length);
+                    return true;
+                } else {
+                    console.log('Nenhum dado encontrado no localStorage. Iniciando com array vazio.');
+                    checklists = [];
+                    return true;
+                }
+            } catch (e) {
+                console.error('Erro ao carregar do localStorage:', e);
+                showNotification('Erro ao carregar dados salvos. Iniciando com dados vazios.', 'error');
+                checklists = [];
+                return false;
+            }
         }
-        localStorage.setItem('test', data);
-        localStorage.removeItem('test');
-        return true;
-    } catch (e) {
-        console.warn('LocalStorage está cheio ou não suportado');
-        return false;
-    }
-}
 
-// Função para limpar dados antigos (manter apenas os últimos 100 checklists)
-function cleanupOldData() {
-    if (checklists.length > 100) {
-        // Ordenar por timestamp (mais recentes primeiro) e manter apenas os 100 mais recentes
-        checklists.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
-        checklists = checklists.slice(0, 100);
-        saveToLocalStorage();
-        console.log('Dados antigos limpos. Mantidos os 100 checklists mais recentes.');
-    }
-}
-
-        
         // Inicialização após o carregamento da página
         document.addEventListener('DOMContentLoaded', function() {
             // Carregar dados do localStorage
             loadFromLocalStorage();
 
-             // Resto da inicialização...
-                initializeSignaturePad();
-                setupEventListeners();
-                updateHistoryList();
-            
             // Inicializar a área de assinatura
             initializeSignaturePad();
             
@@ -1093,21 +1058,20 @@ function cleanupOldData() {
             }
         }
         
-        // Alternar entre tipos de operação
+        // Alternar entre tipos de operação - CORRIGIDA
         function toggleOperacaoType(tipoOperacao) {
-            // Mostrar/ocultar seções específicas conforme o tipo de operação
-            const inspecaoCarga = document.querySelector('.form-section:nth-child(3)');
-            const inspecaoPreExpedicao = document.querySelector('.form-section:nth-child(4)');
+            const secaoInspecaoCarga = document.getElementById('secao-inspecao-carga');
+            const secaoInspecaoExpedicao = document.getElementById('secao-inspecao-expedicao');
             
             if (tipoOperacao === 'recebimento') {
-                inspecaoCarga.style.display = 'block';
-                inspecaoPreExpedicao.style.display = 'none';
+                secaoInspecaoCarga.style.display = 'block';
+                secaoInspecaoExpedicao.style.display = 'none';
             } else if (tipoOperacao === 'expedicao') {
-                inspecaoCarga.style.display = 'none';
-                inspecaoPreExpedicao.style.display = 'block';
+                secaoInspecaoCarga.style.display = 'none';
+                secaoInspecaoExpedicao.style.display = 'block';
             } else {
-                inspecaoCarga.style.display = 'block';
-                inspecaoPreExpedicao.style.display = 'block';
+                secaoInspecaoCarga.style.display = 'block';
+                secaoInspecaoExpedicao.style.display = 'block';
             }
         }
         
@@ -1201,8 +1165,9 @@ function cleanupOldData() {
                 // Salvar no localStorage
                 saveToLocalStorage();
                 
-                // Adicionar ao histórico
-                addToHistory(checklistData);
+                // Atualizar histórico (em vez de adicionar diretamente)
+                updateHistoryList();
+                
                 showNotification(`Checklist de ${checklistData.tipo} salvo com sucesso!`);
                 
                 // Limpar formulário após salvar
@@ -1254,7 +1219,7 @@ function cleanupOldData() {
             return true;
         }
         
-        // Coletar dados do formulário
+        // Coletar dados do formulário - CORRIGIDA
         function collectChecklistData() {
             const id = 'CHK' + Date.now();
             const tipoOperacao = document.getElementById('tipo-operacao').value;
@@ -1274,14 +1239,31 @@ function cleanupOldData() {
             const status = document.querySelector('input[name="status-operacao"]:checked')?.value || 'NÃO DEFINIDO';
             const observacoes = document.getElementById('observacoes-finais').value;
             
-            // Coletar respostas das perguntas
+            // Coletar respostas das perguntas - CORRIGIDA: apenas perguntas visíveis
             const respostas = {};
-            const perguntas = document.querySelectorAll('#recebimento-expedicao .checkbox-item');
-            perguntas.forEach((pergunta) => {
-                const label = pergunta.querySelector('label').textContent;
-                const resposta = pergunta.querySelector('input[type="radio"]:checked')?.value || 'NÃO RESPONDIDO';
-                respostas[label] = resposta;
-            });
+            const tipoOperacaoAtual = document.getElementById('tipo-operacao').value;
+            
+            if (tipoOperacaoAtual === 'recebimento') {
+                // Coletar apenas perguntas de recebimento
+                const perguntasRec = document.querySelectorAll('#secao-inspecao-carga .checkbox-item');
+                perguntasRec.forEach((pergunta) => {
+                    if (pergunta.offsetParent !== null) { // Verifica se está visível
+                        const label = pergunta.querySelector('label').textContent;
+                        const resposta = pergunta.querySelector('input[type="radio"]:checked')?.value || 'NÃO RESPONDIDO';
+                        respostas[label] = resposta;
+                    }
+                });
+            } else if (tipoOperacaoAtual === 'expedicao') {
+                // Coletar apenas perguntas de expedição
+                const perguntasExp = document.querySelectorAll('#secao-inspecao-expedicao .checkbox-item');
+                perguntasExp.forEach((pergunta) => {
+                    if (pergunta.offsetParent !== null) { // Verifica se está visível
+                        const label = pergunta.querySelector('label').textContent;
+                        const resposta = pergunta.querySelector('input[type="radio"]:checked')?.value || 'NÃO RESPONDIDO';
+                        respostas[label] = resposta;
+                    }
+                });
+            }
             
             // Coletar fotos
             const fotos = [];
@@ -1530,44 +1512,38 @@ function cleanupOldData() {
                 historyList.innerHTML = '<li class="empty-message">Nenhum checklist encontrado</li>';
             } else {
                 filteredChecklists.forEach(checklist => {
-                    addToHistory(checklist);
+                    const historyItem = document.createElement('li');
+                    historyItem.className = 'history-item';
+                    
+                    const dateStr = checklist.data || new Date(checklist.timestamp).toLocaleDateString('pt-BR');
+                    
+                    let statusClass = '';
+                    if (checklist.status === 'APROVADO' || checklist.status === 'LIBERADA') {
+                        statusClass = checklist.tipo === 'Recebimento' ? 'status-approved' : 'status-released';
+                    } else {
+                        statusClass = checklist.tipo === 'Recebimento' ? 'status-rejected' : 'status-blocked';
+                    }
+                    
+                    historyItem.innerHTML = `
+                        <div class="history-item-info">
+                            <div class="history-item-header">
+                                <span class="history-item-type">${checklist.tipo} - ${checklist.tipoCarga || 'Tipo não definido'}</span>
+                                <span class="history-item-date">${dateStr}</span>
+                            </div>
+                            <div>
+                                <span>Responsável: ${checklist.responsavel || 'Não informado'}</span>
+                                <span class="history-item-status ${statusClass}">${checklist.status}</span>
+                            </div>
+                        </div>
+                        <div class="history-item-actions">
+                            <button class="btn btn-success btn-small" onclick="generatePDF('${checklist.id}')">Gerar PDF</button>
+                            <button class="btn btn-danger btn-small" onclick="deleteChecklist('${checklist.id}')">Excluir</button>
+                        </div>
+                    `;
+                    
+                    historyList.appendChild(historyItem);
                 });
             }
-        }
-        
-        // Função para adicionar itens ao histórico
-        function addToHistory(checklist) {
-            const historyList = document.getElementById('history-list');
-            const historyItem = document.createElement('li');
-            historyItem.className = 'history-item';
-            
-            const dateStr = checklist.data || new Date(checklist.timestamp).toLocaleDateString('pt-BR');
-            
-            let statusClass = '';
-            if (checklist.status === 'APROVADO' || checklist.status === 'LIBERADA') {
-                statusClass = checklist.tipo === 'Recebimento' ? 'status-approved' : 'status-released';
-            } else {
-                statusClass = checklist.tipo === 'Recebimento' ? 'status-rejected' : 'status-blocked';
-            }
-            
-            historyItem.innerHTML = `
-                <div class="history-item-info">
-                    <div class="history-item-header">
-                        <span class="history-item-type">${checklist.tipo} - ${checklist.tipoCarga || 'Tipo não definido'}</span>
-                        <span class="history-item-date">${dateStr}</span>
-                    </div>
-                    <div>
-                        <span>Responsável: ${checklist.responsavel || 'Não informado'}</span>
-                        <span class="history-item-status ${statusClass}">${checklist.status}</span>
-                    </div>
-                </div>
-                <div class="history-item-actions">
-                    <button class="btn btn-success btn-small" onclick="generatePDF('${checklist.id}')">Gerar PDF</button>
-                    <button class="btn btn-danger btn-small" onclick="deleteChecklist('${checklist.id}')">Excluir</button>
-                </div>
-            `;
-            
-            historyList.appendChild(historyItem);
         }
         
         // Função para excluir um checklist
