@@ -398,32 +398,55 @@
     
     <div class="container">
         <nav class="nav-tabs">
-            <a href="#" class="nav-tab active" data-tab="recebimento">Recebimento</a>
-            <a href="#" class="nav-tab" data-tab="expedicao">Expedição</a>
+            <a href="#" class="nav-tab active" data-tab="recebimento-expedicao">Recebimento / Expedição</a>
             <a href="#" class="nav-tab" data-tab="historico">Histórico</a>
         </nav>
         
-        <!-- Tela de Recebimento -->
-        <div id="recebimento" class="tab-content active">
-            <h2>Checklist de Recebimento</h2>
+        <!-- Tela Unificada de Recebimento/Expedição -->
+        <div id="recebimento-expedicao" class="tab-content active">
+            <h2>Checklist de Recebimento / Expedição</h2>
             
             <div class="form-section">
-                <h3>Dados Gerais do Recebimento</h3>
+                <h3>Dados Gerais</h3>
                 <div class="form-group">
-                    <label for="data-recebimento">Data:</label>
-                    <input type="date" id="data-recebimento" required>
+                    <label for="tipo-operacao">Tipo de Operação:</label>
+                    <select id="tipo-operacao" required>
+                        <option value="">Selecione</option>
+                        <option value="recebimento">Recebimento</option>
+                        <option value="expedicao">Expedição</option>
+                    </select>
                 </div>
                 <div class="form-group">
-                    <label for="responsavel-recebimento">Responsável pela Inspeção:</label>
-                    <input type="text" id="responsavel-recebimento" required>
+                    <label for="data">Data:</label>
+                    <input type="date" id="data" required>
                 </div>
                 <div class="form-group">
-                    <label for="tipo-carga-recebimento">Tipo de Carga:</label>
-                    <select id="tipo-carga-recebimento" required>
+                    <label for="responsavel">Responsável pela Inspeção:</label>
+                    <input type="text" id="responsavel" required>
+                </div>
+                <div class="form-group">
+                    <label for="tipo-carga">Tipo de Carga:</label>
+                    <select id="tipo-carga" required>
                         <option value="">Selecione</option>
                         <option value="contentores">Contentores</option>
                         <option value="tambores-ibcs">Tambores/IBCs</option>
                     </select>
+                </div>
+                <div class="form-group">
+                    <label for="produto">Produto:</label>
+                    <input type="text" id="produto" placeholder="Digite o produto">
+                </div>
+                <div class="form-group">
+                    <label for="lote">Lote:</label>
+                    <input type="text" id="lote" placeholder="Digite o lote">
+                </div>
+                <div class="form-group">
+                    <label for="lacres">Lacres:</label>
+                    <input type="text" id="lacres" placeholder="Digite os lacres">
+                </div>
+                <div class="form-group">
+                    <label for="validade-produto">Validade do Produto:</label>
+                    <input type="date" id="validade-produto">
                 </div>
             </div>
             
@@ -442,17 +465,8 @@
                     <input type="date" id="validade-teste">
                 </div>
                 <div class="form-group">
-                    <label>GPS Funcionando?</label>
-                    <div class="radio-group">
-                        <div class="radio-option">
-                            <input type="radio" id="gps-sim" name="gps" value="SIM">
-                            <label for="gps-sim">SIM</label>
-                        </div>
-                        <div class="radio-option">
-                            <input type="radio" id="gps-nao" name="gps" value="NÃO">
-                            <label for="gps-nao">NÃO</label>
-                        </div>
-                    </div>
+                    <label for="gps-funcionando">GPS Funcionando:</label>
+                    <input type="text" id="gps-funcionando" placeholder="Descreva o status do GPS">
                 </div>
             </div>
             
@@ -628,73 +642,6 @@
             </div>
             
             <div class="form-section">
-                <h3>Aprovação/Reprovação</h3>
-                <div class="form-group">
-                    <label>Status do Recebimento:</label>
-                    <div class="radio-group">
-                        <div class="radio-option">
-                            <input type="radio" id="status-aprovado" name="status-recebimento" value="APROVADO" required>
-                            <label for="status-aprovado">APROVADO</label>
-                        </div>
-                        <div class="radio-option">
-                            <input type="radio" id="status-reprovado" name="status-recebimento" value="REPROVADO">
-                            <label for="status-reprovado">REPROVADO</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="justificativa-reprovacao">Justificativa (em caso de reprovação):</label>
-                    <textarea id="justificativa-reprovacao" rows="3"></textarea>
-                </div>
-                <div class="form-group">
-                    <label>Assinatura do Responsável:</label>
-                    <div class="signature-pad" id="signature-recebimento">
-                        <canvas id="signature-canvas-recebimento"></canvas>
-                    </div>
-                    <button type="button" class="btn btn-primary" id="clear-signature-recebimento">Limpar Assinatura</button>
-                </div>
-            </div>
-            
-            <div class="form-section">
-                <h3>Fotos</h3>
-                <div class="form-group">
-                    <input type="file" id="foto-recebimento" accept="image/*" multiple>
-                    <button type="button" class="btn btn-primary" id="add-foto-recebimento">Adicionar Foto</button>
-                </div>
-                <div class="photo-container" id="fotos-recebimento"></div>
-            </div>
-            
-            <div class="btn-group">
-                <button type="button" class="btn btn-primary" id="salvar-recebimento">Salvar Checklist</button>
-                <button type="button" class="btn btn-warning" id="limpar-recebimento">Limpar Formulário</button>
-            </div>
-        </div>
-        
-        <!-- Tela de Expedição -->
-        <div id="expedicao" class="tab-content">
-            <h2>Checklist de Expedição</h2>
-            
-            <div class="form-section">
-                <h3>Dados Gerais da Expedição</h3>
-                <div class="form-group">
-                    <label for="data-expedicao">Data:</label>
-                    <input type="date" id="data-expedicao" required>
-                </div>
-                <div class="form-group">
-                    <label for="responsavel-expedicao">Responsável pela Inspeção:</label>
-                    <input type="text" id="responsavel-expedicao" required>
-                </div>
-                <div class="form-group">
-                    <label for="tipo-carga-expedicao">Tipo de Carga:</label>
-                    <select id="tipo-carga-expedicao" required>
-                        <option value="">Selecione</option>
-                        <option value="contentores">Contentores</option>
-                        <option value="tambores-ibcs">Tambores/IBCs</option>
-                    </select>
-                </div>
-            </div>
-            
-            <div class="form-section">
                 <h3>Inspeção Pré-Expedição</h3>
                 <div id="inspecao-exp-contentores">
                     <h4>Para Contentores</h4>
@@ -855,15 +802,15 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>Status da Expedição:</label>
+                    <label>Status da Operação:</label>
                     <div class="radio-group">
                         <div class="radio-option">
-                            <input type="radio" id="status-liberada" name="status-expedicao" value="LIBERADA" required>
-                            <label for="status-liberada">LIBERADA</label>
+                            <input type="radio" id="status-aprovado-liberada" name="status-operacao" value="APROVADO/LIBERADA" required>
+                            <label for="status-aprovado-liberada">APROVADO/LIBERADA</label>
                         </div>
                         <div class="radio-option">
-                            <input type="radio" id="status-bloqueada" name="status-expedicao" value="BLOQUEADA">
-                            <label for="status-bloqueada">BLOQUEADA</label>
+                            <input type="radio" id="status-reprovado-bloqueada" name="status-operacao" value="REPROVADO/BLOQUEADA">
+                            <label for="status-reprovado-bloqueada">REPROVADO/BLOQUEADA</label>
                         </div>
                     </div>
                 </div>
@@ -873,25 +820,25 @@
                 </div>
                 <div class="form-group">
                     <label>Assinatura do Responsável:</label>
-                    <div class="signature-pad" id="signature-expedicao">
-                        <canvas id="signature-canvas-expedicao"></canvas>
+                    <div class="signature-pad" id="signature">
+                        <canvas id="signature-canvas"></canvas>
                     </div>
-                    <button type="button" class="btn btn-primary" id="clear-signature-expedicao">Limpar Assinatura</button>
+                    <button type="button" class="btn btn-primary" id="clear-signature">Limpar Assinatura</button>
                 </div>
             </div>
             
             <div class="form-section">
                 <h3>Fotos</h3>
                 <div class="form-group">
-                    <input type="file" id="foto-expedicao" accept="image/*" multiple>
-                    <button type="button" class="btn btn-primary" id="add-foto-expedicao">Adicionar Foto</button>
+                    <input type="file" id="foto" accept="image/*" multiple>
+                    <button type="button" class="btn btn-primary" id="add-foto">Adicionar Foto</button>
                 </div>
-                <div class="photo-container" id="fotos-expedicao"></div>
+                <div class="photo-container" id="fotos"></div>
             </div>
             
             <div class="btn-group">
-                <button type="button" class="btn btn-primary" id="salvar-expedicao">Salvar Checklist</button>
-                <button type="button" class="btn btn-warning" id="limpar-expedicao">Limpar Formulário</button>
+                <button type="button" class="btn btn-primary" id="salvar">Salvar Checklist</button>
+                <button type="button" class="btn btn-warning" id="limpar">Limpar Formulário</button>
             </div>
         </div>
         
@@ -938,7 +885,7 @@
     <script>
         // Variáveis para armazenar os dados
         let checklists = [];
-        let signaturePadRecebimento, signaturePadExpedicao;
+        let signaturePad;
         
         // ===============================
         // ARMAZENAMENTO LOCAL (localStorage)
@@ -1015,12 +962,12 @@ function cleanupOldData() {
             loadFromLocalStorage();
 
              // Resto da inicialização...
-                initializeSignaturePads();
+                initializeSignaturePad();
                 setupEventListeners();
                 updateHistoryList();
             
-            // Inicializar as áreas de assinatura
-            initializeSignaturePads();
+            // Inicializar a área de assinatura
+            initializeSignaturePad();
             
             // Configurar eventos
             setupEventListeners();
@@ -1029,10 +976,9 @@ function cleanupOldData() {
             updateHistoryList();
         });
         
-        // Inicializar as áreas de assinatura
-        function initializeSignaturePads() {
-            const canvasRecebimento = document.getElementById('signature-canvas-recebimento');
-            const canvasExpedicao = document.getElementById('signature-canvas-expedicao');
+        // Inicializar a área de assinatura
+        function initializeSignaturePad() {
+            const canvas = document.getElementById('signature-canvas');
             
             // Configurar canvas
             function setupCanvas(canvas) {
@@ -1044,15 +990,10 @@ function cleanupOldData() {
                 canvas.style.height = '100%';
             }
             
-            setupCanvas(canvasRecebimento);
-            setupCanvas(canvasExpedicao);
+            setupCanvas(canvas);
             
-            // Inicializar signature pads
-            signaturePadRecebimento = new SignaturePad(canvasRecebimento, {
-                backgroundColor: 'rgb(255, 255, 255)'
-            });
-            
-            signaturePadExpedicao = new SignaturePad(canvasExpedicao, {
+            // Inicializar signature pad
+            signaturePad = new SignaturePad(canvas, {
                 backgroundColor: 'rgb(255, 255, 255)'
             });
         }
@@ -1068,48 +1009,33 @@ function cleanupOldData() {
             });
             
             // Alternar entre tipos de carga
-            document.getElementById('tipo-carga-recebimento').addEventListener('change', function() {
-                toggleCargaType('recebimento', this.value);
+            document.getElementById('tipo-carga').addEventListener('change', function() {
+                toggleCargaType(this.value);
             });
             
-            document.getElementById('tipo-carga-expedicao').addEventListener('change', function() {
-                toggleCargaType('expedicao', this.value);
+            // Alternar entre tipos de operação
+            document.getElementById('tipo-operacao').addEventListener('change', function() {
+                toggleOperacaoType(this.value);
             });
             
             // Adicionar fotos
-            document.getElementById('add-foto-recebimento').addEventListener('click', function() {
-                addPhotos('recebimento');
+            document.getElementById('add-foto').addEventListener('click', function() {
+                addPhotos();
             });
             
-            document.getElementById('add-foto-expedicao').addEventListener('click', function() {
-                addPhotos('expedicao');
+            // Limpar assinatura
+            document.getElementById('clear-signature').addEventListener('click', function() {
+                signaturePad.clear();
             });
             
-            // Limpar assinaturas
-            document.getElementById('clear-signature-recebimento').addEventListener('click', function() {
-                signaturePadRecebimento.clear();
+            // SALVAR CHECKLIST
+            document.getElementById('salvar').addEventListener('click', function() {
+                saveChecklist();
             });
             
-            document.getElementById('clear-signature-expedicao').addEventListener('click', function() {
-                signaturePadExpedicao.clear();
-            });
-            
-            // SALVAR CHECKLISTS - CORREÇÃO PRINCIPAL
-            document.getElementById('salvar-recebimento').addEventListener('click', function() {
-                saveChecklist('recebimento');
-            });
-            
-            document.getElementById('salvar-expedicao').addEventListener('click', function() {
-                saveChecklist('expedicao');
-            });
-            
-            // LIMPAR FORMULÁRIOS - CORREÇÃO PRINCIPAL
-            document.getElementById('limpar-recebimento').addEventListener('click', function() {
-                clearForm('recebimento');
-            });
-            
-            document.getElementById('limpar-expedicao').addEventListener('click', function() {
-                clearForm('expedicao');
+            // LIMPAR FORMULÁRIO
+            document.getElementById('limpar').addEventListener('click', function() {
+                clearForm();
             });
             
             // Filtros
@@ -1148,29 +1074,47 @@ function cleanupOldData() {
         }
         
         // Alternar entre tipos de carga
-        function toggleCargaType(formType, tipoCarga) {
-            const contentoresId = formType === 'recebimento' ? 'inspecao-contentores' : 'inspecao-exp-contentores';
-            const tamboresId = formType === 'recebimento' ? 'inspecao-tambores' : 'inspecao-exp-tambores';
-            
+        function toggleCargaType(tipoCarga) {
             if (tipoCarga === 'contentores') {
-                document.getElementById(contentoresId).style.display = 'block';
-                document.getElementById(tamboresId).style.display = 'none';
+                document.getElementById('inspecao-contentores').style.display = 'block';
+                document.getElementById('inspecao-tambores').style.display = 'none';
+                document.getElementById('inspecao-exp-contentores').style.display = 'block';
+                document.getElementById('inspecao-exp-tambores').style.display = 'none';
             } else if (tipoCarga === 'tambores-ibcs') {
-                document.getElementById(contentoresId).style.display = 'none';
-                document.getElementById(tamboresId).style.display = 'block';
+                document.getElementById('inspecao-contentores').style.display = 'none';
+                document.getElementById('inspecao-tambores').style.display = 'block';
+                document.getElementById('inspecao-exp-contentores').style.display = 'none';
+                document.getElementById('inspecao-exp-tambores').style.display = 'block';
             } else {
-                document.getElementById(contentoresId).style.display = 'none';
-                document.getElementById(tamboresId).style.display = 'none';
+                document.getElementById('inspecao-contentores').style.display = 'none';
+                document.getElementById('inspecao-tambores').style.display = 'none';
+                document.getElementById('inspecao-exp-contentores').style.display = 'none';
+                document.getElementById('inspecao-exp-tambores').style.display = 'none';
+            }
+        }
+        
+        // Alternar entre tipos de operação
+        function toggleOperacaoType(tipoOperacao) {
+            // Mostrar/ocultar seções específicas conforme o tipo de operação
+            const inspecaoCarga = document.querySelector('.form-section:nth-child(3)');
+            const inspecaoPreExpedicao = document.querySelector('.form-section:nth-child(4)');
+            
+            if (tipoOperacao === 'recebimento') {
+                inspecaoCarga.style.display = 'block';
+                inspecaoPreExpedicao.style.display = 'none';
+            } else if (tipoOperacao === 'expedicao') {
+                inspecaoCarga.style.display = 'none';
+                inspecaoPreExpedicao.style.display = 'block';
+            } else {
+                inspecaoCarga.style.display = 'block';
+                inspecaoPreExpedicao.style.display = 'block';
             }
         }
         
         // Adicionar fotos
-        function addPhotos(formType) {
-            const inputId = `foto-${formType}`;
-            const containerId = `fotos-${formType}`;
-            
-            const input = document.getElementById(inputId);
-            const container = document.getElementById(containerId);
+        function addPhotos() {
+            const input = document.getElementById('foto');
+            const container = document.getElementById('fotos');
             
             if (input.files.length > 0) {
                 for (let i = 0; i < input.files.length; i++) {
@@ -1206,10 +1150,10 @@ function cleanupOldData() {
             }
         }
         
-        // LIMPAR FORMULÁRIO - FUNÇÃO CORRIGIDA
-        function clearForm(formType) {
+        // LIMPAR FORMULÁRIO
+        function clearForm() {
             // Reset do formulário
-            const form = document.getElementById(formType);
+            const form = document.getElementById('recebimento-expedicao');
             const formElements = form.querySelectorAll('input, select, textarea');
             
             formElements.forEach(element => {
@@ -1223,42 +1167,33 @@ function cleanupOldData() {
             });
             
             // Limpar assinatura
-            if (formType === 'recebimento') {
-                signaturePadRecebimento.clear();
-            } else {
-                signaturePadExpedicao.clear();
-            }
+            signaturePad.clear();
             
             // Limpar fotos
-            const containerId = `fotos-${formType}`;
-            document.getElementById(containerId).innerHTML = '';
+            document.getElementById('fotos').innerHTML = '';
             
             // Resetar exibição dos tipos de carga
-            if (formType === 'recebimento') {
-                document.getElementById('inspecao-contentores').style.display = 'none';
-                document.getElementById('inspecao-tambores').style.display = 'none';
-                document.getElementById('tipo-carga-recebimento').value = '';
-            } else {
-                document.getElementById('inspecao-exp-contentores').style.display = 'none';
-                document.getElementById('inspecao-exp-tambores').style.display = 'none';
-                document.getElementById('tipo-carga-expedicao').value = '';
-            }
+            document.getElementById('inspecao-contentores').style.display = 'none';
+            document.getElementById('inspecao-tambores').style.display = 'none';
+            document.getElementById('inspecao-exp-contentores').style.display = 'none';
+            document.getElementById('inspecao-exp-tambores').style.display = 'none';
+            document.getElementById('tipo-carga').value = '';
             
             showNotification('Formulário limpo com sucesso!');
         }
         
-        // SALVAR CHECKLIST - FUNÇÃO CORRIGIDA
-        function saveChecklist(formType) {
-            console.log('Salvando checklist:', formType);
+        // SALVAR CHECKLIST
+        function saveChecklist() {
+            console.log('Salvando checklist');
             
             // Validar campos obrigatórios
-            if (!validateForm(formType)) {
+            if (!validateForm()) {
                 showNotification('Preencha todos os campos obrigatórios!', 'error');
                 return;
             }
             
             try {
-                const checklistData = formType === 'recebimento' ? collectRecebimentoData() : collectExpedicaoData();
+                const checklistData = collectChecklistData();
                 console.log('Dados coletados:', checklistData);
                 
                 checklists.push(checklistData);
@@ -1271,7 +1206,7 @@ function cleanupOldData() {
                 showNotification(`Checklist de ${checklistData.tipo} salvo com sucesso!`);
                 
                 // Limpar formulário após salvar
-                clearForm(formType);
+                clearForm();
                 
             } catch (error) {
                 console.error('Erro ao salvar checklist:', error);
@@ -1280,8 +1215,8 @@ function cleanupOldData() {
         }
         
         // Validar formulário
-        function validateForm(formType) {
-            const form = document.getElementById(formType);
+        function validateForm() {
+            const form = document.getElementById('recebimento-expedicao');
             
             // Validar campos obrigatórios básicos
             const requiredFields = form.querySelectorAll('[required]');
@@ -1292,10 +1227,16 @@ function cleanupOldData() {
                 }
             }
             
+            // Validar tipo de operação selecionado
+            const tipoOperacao = document.getElementById('tipo-operacao').value;
+            
+            if (!tipoOperacao) {
+                showNotification('Selecione o tipo de operação!', 'error');
+                return false;
+            }
+            
             // Validar tipo de carga selecionado
-            const tipoCarga = formType === 'recebimento' 
-                ? document.getElementById('tipo-carga-recebimento').value
-                : document.getElementById('tipo-carga-expedicao').value;
+            const tipoCarga = document.getElementById('tipo-carga').value;
             
             if (!tipoCarga) {
                 showNotification('Selecione o tipo de carga!', 'error');
@@ -1303,8 +1244,7 @@ function cleanupOldData() {
             }
             
             // Validar status selecionado
-            const statusFieldName = formType === 'recebimento' ? 'status-recebimento' : 'status-expedicao';
-            const statusSelected = form.querySelector(`input[name="${statusFieldName}"]:checked`);
+            const statusSelected = form.querySelector('input[name="status-operacao"]:checked');
             
             if (!statusSelected) {
                 showNotification('Selecione o status!', 'error');
@@ -1314,29 +1254,68 @@ function cleanupOldData() {
             return true;
         }
         
-        // Função para salvar dados no localStorage
-        function saveToLocalStorage() {
-            try {
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(checklists));
-                console.log('Dados salvos no localStorage');
-            } catch (e) {
-                console.error('Erro ao salvar no localStorage:', e);
-                showNotification('Erro ao salvar dados localmente', 'error');
-            }
-        }
-        
-        // Função para carregar dados do localStorage
-        function loadFromLocalStorage() {
-            try {
-                const savedData = localStorage.getItem(STORAGE_KEY);
-                if (savedData) {
-                    checklists = JSON.parse(savedData);
-                    console.log('Dados carregados do localStorage:', checklists.length, 'checklists');
-                }
-            } catch (e) {
-                console.error('Erro ao carregar do localStorage:', e);
-                showNotification('Erro ao carregar dados salvos', 'error');
-            }
+        // Coletar dados do formulário
+        function collectChecklistData() {
+            const id = 'CHK' + Date.now();
+            const tipoOperacao = document.getElementById('tipo-operacao').value;
+            const data = document.getElementById('data').value;
+            const responsavel = document.getElementById('responsavel').value;
+            const tipoCarga = document.getElementById('tipo-carga').value;
+            const produto = document.getElementById('produto').value;
+            const lote = document.getElementById('lote').value;
+            const lacres = document.getElementById('lacres').value;
+            const validadeProduto = document.getElementById('validade-produto').value;
+            const serialChassi = document.getElementById('serial-chassi').value;
+            const modeloEquipamento = document.getElementById('modelo-equipamento').value;
+            const validadeTeste = document.getElementById('validade-teste').value;
+            const gpsFuncionando = document.getElementById('gps-funcionando').value;
+            const cargaSegura = document.querySelector('input[name="carga-segura"]:checked')?.value || 'NÃO INFORMADO';
+            const documentacao = document.querySelector('input[name="documentacao"]:checked')?.value || 'NÃO INFORMADO';
+            const status = document.querySelector('input[name="status-operacao"]:checked')?.value || 'NÃO DEFINIDO';
+            const observacoes = document.getElementById('observacoes-finais').value;
+            
+            // Coletar respostas das perguntas
+            const respostas = {};
+            const perguntas = document.querySelectorAll('#recebimento-expedicao .checkbox-item');
+            perguntas.forEach((pergunta) => {
+                const label = pergunta.querySelector('label').textContent;
+                const resposta = pergunta.querySelector('input[type="radio"]:checked')?.value || 'NÃO RESPONDIDO';
+                respostas[label] = resposta;
+            });
+            
+            // Coletar fotos
+            const fotos = [];
+            const fotoElements = document.querySelectorAll('#fotos .photo-item img');
+            fotoElements.forEach(img => {
+                fotos.push(img.src);
+            });
+            
+            // Coletar assinatura
+            const assinatura = signaturePad.isEmpty() ? '' : signaturePad.toDataURL();
+            
+            return {
+                id,
+                tipo: tipoOperacao === 'recebimento' ? 'Recebimento' : 'Expedição',
+                data,
+                responsavel,
+                tipoCarga,
+                produto,
+                lote,
+                lacres,
+                validadeProduto,
+                serialChassi,
+                modeloEquipamento,
+                validadeTeste,
+                gpsFuncionando,
+                cargaSegura,
+                documentacao,
+                respostas,
+                status,
+                observacoes,
+                assinatura,
+                fotos,
+                timestamp: new Date().toISOString()
+            };
         }
         
         // Função para mostrar notificação
@@ -1354,104 +1333,6 @@ function cleanupOldData() {
             setTimeout(() => {
                 notification.className = 'notification hidden';
             }, 3000);
-        }
-        
-        // Coletar dados do formulário de recebimento
-        function collectRecebimentoData() {
-            const id = 'CHK' + Date.now();
-            const data = document.getElementById('data-recebimento').value;
-            const responsavel = document.getElementById('responsavel-recebimento').value;
-            const tipoCarga = document.getElementById('tipo-carga-recebimento').value;
-            const serialChassi = document.getElementById('serial-chassi').value;
-            const modeloEquipamento = document.getElementById('modelo-equipamento').value;
-            const validadeTeste = document.getElementById('validade-teste').value;
-            const gpsFuncionando = document.querySelector('input[name="gps"]:checked')?.value || 'NÃO INFORMADO';
-            const status = document.querySelector('input[name="status-recebimento"]:checked')?.value || 'NÃO DEFINIDO';
-            const justificativa = document.getElementById('justificativa-reprovacao').value;
-            
-            // Coletar respostas das perguntas
-            const respostas = {};
-            const perguntas = document.querySelectorAll('#recebimento .checkbox-item');
-            perguntas.forEach((pergunta) => {
-                const label = pergunta.querySelector('label').textContent;
-                const resposta = pergunta.querySelector('input[type="radio"]:checked')?.value || 'NÃO RESPONDIDO';
-                respostas[label] = resposta;
-            });
-            
-            // Coletar fotos
-            const fotos = [];
-            const fotoElements = document.querySelectorAll('#fotos-recebimento .photo-item img');
-            fotoElements.forEach(img => {
-                fotos.push(img.src);
-            });
-            
-            // Coletar assinatura
-            const assinatura = signaturePadRecebimento.isEmpty() ? '' : signaturePadRecebimento.toDataURL();
-            
-            return {
-                id,
-                tipo: 'Recebimento',
-                data,
-                responsavel,
-                tipoCarga,
-                serialChassi,
-                modeloEquipamento,
-                validadeTeste,
-                gpsFuncionando,
-                respostas,
-                status,
-                justificativa,
-                assinatura,
-                fotos,
-                timestamp: new Date().toISOString()
-            };
-        }
-        
-        // Coletar dados do formulário de expedição
-        function collectExpedicaoData() {
-            const id = 'CHK' + Date.now();
-            const data = document.getElementById('data-expedicao').value;
-            const responsavel = document.getElementById('responsavel-expedicao').value;
-            const tipoCarga = document.getElementById('tipo-carga-expedicao').value;
-            const cargaSegura = document.querySelector('input[name="carga-segura"]:checked')?.value || 'NÃO INFORMADO';
-            const documentacao = document.querySelector('input[name="documentacao"]:checked')?.value || 'NÃO INFORMADO';
-            const status = document.querySelector('input[name="status-expedicao"]:checked')?.value || 'NÃO DEFINIDO';
-            const observacoes = document.getElementById('observacoes-finais').value;
-            
-            // Coletar respostas das perguntas
-            const respostas = {};
-            const perguntas = document.querySelectorAll('#expedicao .checkbox-item');
-            perguntas.forEach((pergunta) => {
-                const label = pergunta.querySelector('label').textContent;
-                const resposta = pergunta.querySelector('input[type="radio"]:checked')?.value || 'NÃO RESPONDIDO';
-                respostas[label] = resposta;
-            });
-            
-            // Coletar fotos
-            const fotos = [];
-            const fotoElements = document.querySelectorAll('#fotos-expedicao .photo-item img');
-            fotoElements.forEach(img => {
-                fotos.push(img.src);
-            });
-            
-            // Coletar assinatura
-            const assinatura = signaturePadExpedicao.isEmpty() ? '' : signaturePadExpedicao.toDataURL();
-            
-            return {
-                id,
-                tipo: 'Expedição',
-                data,
-                responsavel,
-                tipoCarga,
-                cargaSegura,
-                documentacao,
-                respostas,
-                status,
-                observacoes,
-                assinatura,
-                fotos,
-                timestamp: new Date().toISOString()
-            };
         }
         
         // Função para gerar PDF
@@ -1486,6 +1367,14 @@ function cleanupOldData() {
             
             doc.text(`Responsável: ${checklist.responsavel}`, margin, yPosition);
             doc.text(`Tipo de Carga: ${checklist.tipoCarga}`, pageWidth - margin, yPosition, { align: 'right' });
+            yPosition += 8;
+            
+            doc.text(`Produto: ${checklist.produto || 'Não informado'}`, margin, yPosition);
+            doc.text(`Lote: ${checklist.lote || 'Não informado'}`, pageWidth - margin, yPosition, { align: 'right' });
+            yPosition += 8;
+            
+            doc.text(`Lacres: ${checklist.lacres || 'Não informado'}`, margin, yPosition);
+            doc.text(`Validade do Produto: ${checklist.validadeProduto || 'Não informado'}`, pageWidth - margin, yPosition, { align: 'right' });
             yPosition += 15;
             
             // Dados específicos do tipo de checklist
@@ -1542,11 +1431,7 @@ function cleanupOldData() {
             doc.text(`Status: ${checklist.status}`, margin, yPosition);
             yPosition += 8;
             
-            if (checklist.tipo === 'Recebimento' && checklist.justificativa) {
-                const justificativaLines = doc.splitTextToSize(`Justificativa: ${checklist.justificativa}`, pageWidth - 2 * margin);
-                doc.text(justificativaLines, margin, yPosition);
-                yPosition += justificativaLines.length * 5;
-            } else if (checklist.tipo === 'Expedição' && checklist.observacoes) {
+            if (checklist.observacoes) {
                 const observacoesLines = doc.splitTextToSize(`Observações: ${checklist.observacoes}`, pageWidth - 2 * margin);
                 doc.text(observacoesLines, margin, yPosition);
                 yPosition += observacoesLines.length * 5;
