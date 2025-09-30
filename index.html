@@ -26,11 +26,15 @@
             background-color: var(--light-gray);
             color: #333;
             line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
         
         .container {
             max-width: 100%;
             padding: 15px;
+            flex: 1;
         }
         
         header {
@@ -372,6 +376,44 @@
             color: var(--dark-gray);
             font-style: italic;
         }
+
+        /* NOVO: Estilos para o rodapé */
+        .footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 30px;
+            border-top: 3px solid var(--secondary-color);
+        }
+
+        .footer-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .developer-info {
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .developer-name {
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .ai-developed {
+            font-style: italic;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+
+        .version {
+            font-size: 12px;
+            opacity: 0.7;
+            margin-top: 5px;
+        }
         
         @media (min-width: 768px) {
             .container {
@@ -381,6 +423,21 @@
             
             .form-section {
                 padding: 20px;
+            }
+
+            .developer-info {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-wrap: wrap;
+            }
+
+            .developer-credits {
+                text-align: left;
+            }
+
+            .version {
+                text-align: right;
             }
         }
     </style>
@@ -883,6 +940,19 @@
             </div>
         </div>
     </div>
+
+    <!-- NOVO: Rodapé com informações do desenvolvedor -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="developer-info">
+                <div class="developer-credits">
+                    <div class="developer-name">Desenvolvido por Aldemir Garbino</div>
+                    <div class="ai-developed">Sistema criado com assistência de Inteligência Artificial</div>
+                </div>
+                <div class="version">Versão 1.0 - 2024</div>
+            </div>
+        </div>
+    </footer>
 
     <script>
         // Variáveis para armazenar os dados
