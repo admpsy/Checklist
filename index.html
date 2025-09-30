@@ -522,8 +522,8 @@
                     <input type="date" id="validade-teste">
                 </div>
                 <div class="form-group">
-                    <label for="gps-funcionando">GPS Funcionando:</label>
-                    <input type="text" id="gps-funcionando" placeholder="Descreva o status do GPS">
+                    <label for="gps-funcionando">GPS Número:</label>
+                    <input type="text" id="gps-numero" placeholder="Descreva a numeração do GPS">
                 </div>
             </div>
             
@@ -949,7 +949,7 @@
                     <div class="developer-name">Desenvolvido por Aldemir Garbino</div>
                     <div class="ai-developed">Sistema criado com assistência de Inteligência Artificial</div>
                 </div>
-                <div class="version">Versão 1.0 - 2024</div>
+                <div class="version">Versão 1.0 - 2025</div>
             </div>
         </div>
     </footer>
@@ -1303,7 +1303,7 @@
             const serialChassi = document.getElementById('serial-chassi').value;
             const modeloEquipamento = document.getElementById('modelo-equipamento').value;
             const validadeTeste = document.getElementById('validade-teste').value;
-            const gpsFuncionando = document.getElementById('gps-funcionando').value;
+            const gpsNumero = document.getElementById('gps-numero').value;
             const cargaSegura = document.querySelector('input[name="carga-segura"]:checked')?.value || 'NÃO INFORMADO';
             const documentacao = document.querySelector('input[name="documentacao"]:checked')?.value || 'NÃO INFORMADO';
             const status = document.querySelector('input[name="status-operacao"]:checked')?.value || 'NÃO DEFINIDO';
@@ -1358,7 +1358,7 @@
                 serialChassi,
                 modeloEquipamento,
                 validadeTeste,
-                gpsFuncionando,
+                gpsNumero,
                 cargaSegura,
                 documentacao,
                 respostas,
@@ -1437,7 +1437,7 @@
                 yPosition += 8;
                 doc.text(`Validade do Teste: ${checklist.validadeTeste || 'Não informado'}`, margin, yPosition);
                 yPosition += 8;
-                doc.text(`GPS Funcionando: ${checklist.gpsFuncionando || 'Não informado'}`, margin, yPosition);
+                doc.text(`GPS Numero: ${checklist.gpsNumero || 'Não informado'}`, margin, yPosition);
                 yPosition += 15;
             } else {
                 doc.text(`Carga Segura no Veículo: ${checklist.cargaSegura || 'Não informado'}`, margin, yPosition);
