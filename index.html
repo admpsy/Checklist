@@ -26,15 +26,11 @@
             background-color: var(--light-gray);
             color: #333;
             line-height: 1.6;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
         }
         
         .container {
             max-width: 100%;
             padding: 15px;
-            flex: 1;
         }
         
         header {
@@ -376,79 +372,6 @@
             color: var(--dark-gray);
             font-style: italic;
         }
-
-        /* Estilos para o rodapé */
-        .footer {
-            background-color: var(--primary-color);
-            color: white;
-            text-align: center;
-            padding: 15px 0;
-            margin-top: 30px;
-            border-top: 3px solid var(--secondary-color);
-        }
-
-        .footer-content {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-
-        .developer-info {
-            font-size: 14px;
-            line-height: 1.4;
-        }
-
-        .developer-name {
-            font-weight: bold;
-            color: #fff;
-        }
-
-        .ai-developed {
-            font-style: italic;
-            opacity: 0.9;
-            margin-top: 5px;
-        }
-
-        .version {
-            font-size: 12px;
-            opacity: 0.7;
-            margin-top: 5px;
-        }
-
-        /* NOVO: Estilos para perguntas unificadas */
-        .pergunta-item {
-            margin-bottom: 15px;
-            padding: 15px;
-            background-color: white;
-            border-radius: 4px;
-            border: 1px solid var(--medium-gray);
-            transition: border-color 0.3s;
-        }
-
-        .pergunta-item:hover {
-            border-color: var(--secondary-color);
-        }
-
-        .pergunta-texto {
-            font-weight: 600;
-            margin-bottom: 10px;
-            color: var(--dark-gray);
-        }
-
-        .pergunta-fluxo {
-            font-size: 12px;
-            color: var(--primary-color);
-            font-weight: bold;
-            margin-bottom: 5px;
-            text-transform: uppercase;
-        }
-
-        .pergunta-categoria {
-            font-size: 12px;
-            color: var(--dark-gray);
-            margin-bottom: 8px;
-            font-style: italic;
-        }
         
         @media (min-width: 768px) {
             .container {
@@ -458,21 +381,6 @@
             
             .form-section {
                 padding: 20px;
-            }
-
-            .developer-info {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                flex-wrap: wrap;
-            }
-
-            .developer-credits {
-                text-align: left;
-            }
-
-            .version {
-                text-align: right;
             }
         }
     </style>
@@ -490,34 +398,34 @@
     
     <div class="container">
         <nav class="nav-tabs">
-            <a href="#" class="nav-tab active" data-tab="checklist">Checklist Unificado</a>
+            <a href="#" class="nav-tab active" data-tab="recebimento-expedicao">Recebimento / Expedição</a>
             <a href="#" class="nav-tab" data-tab="historico">Histórico</a>
         </nav>
         
-        <!-- Tela Unificada de Checklist -->
-        <div id="checklist" class="tab-content active">
-            <h2>Checklist Unificado</h2>
+        <!-- Tela Unificada de Recebimento/Expedição -->
+        <div id="recebimento-expedicao" class="tab-content active">
+            <h2>Checklist de Recebimento / Expedição</h2>
             
             <div class="form-section">
                 <h3>Dados Gerais</h3>
                 <div class="form-group">
-                    <label for="fluxo-operacao">Fluxo da Operação: <span style="color: var(--danger-color)">*</span></label>
-                    <select id="fluxo-operacao" required>
-                        <option value="">Selecione o fluxo</option>
+                    <label for="tipo-operacao">Tipo de Operação:</label>
+                    <select id="tipo-operacao" required>
+                        <option value="">Selecione</option>
                         <option value="recebimento">Recebimento</option>
                         <option value="expedicao">Expedição</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="data">Data: <span style="color: var(--danger-color)">*</span></label>
+                    <label for="data">Data:</label>
                     <input type="date" id="data" required>
                 </div>
                 <div class="form-group">
-                    <label for="responsavel">Responsável pela Inspeção: <span style="color: var(--danger-color)">*</span></label>
+                    <label for="responsavel">Responsável pela Inspeção:</label>
                     <input type="text" id="responsavel" required>
                 </div>
                 <div class="form-group">
-                    <label for="tipo-carga">Tipo de Carga: <span style="color: var(--danger-color)">*</span></label>
+                    <label for="tipo-carga">Tipo de Carga:</label>
                     <select id="tipo-carga" required>
                         <option value="">Selecione</option>
                         <option value="contentores">Contentores</option>
@@ -561,16 +469,309 @@
                     <input type="text" id="gps-funcionando" placeholder="Descreva o status do GPS">
                 </div>
             </div>
-
-            <!-- NOVA SEÇÃO: Perguntas Unificadas -->
-            <div class="form-section">
-                <h3>Perguntas do Checklist</h3>
-                <p style="margin-bottom: 15px; color: var(--dark-gray); font-style: italic;">
-                    Selecione o fluxo acima para carregar as perguntas específicas
-                </p>
+            
+            <!-- Seção de Inspeção da Carga (Recebimento) -->
+            <div class="form-section" id="secao-inspecao-carga">
+                <h3>Inspeção da Carga</h3>
+                <div id="inspecao-contentores">
+                    <h4>Para Contentores</h4>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <label>As eslingas estão livres de torções ou dobras?</label>
+                            <div class="radio-group">
+                                <div class="radio-option">
+                                    <input type="radio" id="eslingas-rec-sim" name="eslingas-rec" value="SIM">
+                                    <label for="eslingas-rec-sim">SIM</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="eslingas-rec-nao" name="eslingas-rec" value="NÃO">
+                                    <label for="eslingas-rec-nao">NÃO</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="checkbox-item">
+                            <label>O contentor está livre de objetos soltos, que podem cair durante a movimentação de carga?</label>
+                            <div class="radio-group">
+                                <div class="radio-option">
+                                    <input type="radio" id="objetos-soltos-rec-sim" name="objetos-soltos-rec" value="SIM">
+                                    <label for="objetos-soltos-rec-sim">SIM</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="objetos-soltos-rec-nao" name="objetos-soltos-rec" value="NÃO">
+                                    <label for="objetos-soltos-rec-nao">NÃO</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="checkbox-item">
+                            <label>O contentor está livre de sinais de vazamento?</label>
+                            <div class="radio-group">
+                                <div class="radio-option">
+                                    <input type="radio" id="sinais-vazamento-rec-sim" name="sinais-vazamento-rec" value="SIM">
+                                    <label for="sinais-vazamento-rec-sim">SIM</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="sinais-vazamento-rec-nao" name="sinais-vazamento-rec" value="NÃO">
+                                    <label for="sinais-vazamento-rec-nao">NÃO</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="checkbox-item">
+                            <label>A tampa está devidamente fechada?</label>
+                            <div class="radio-group">
+                                <div class="radio-option">
+                                    <input type="radio" id="tampa-fechada-rec-sim" name="tampa-fechada-rec" value="SIM">
+                                    <label for="tampa-fechada-rec-sim">SIM</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="tampa-fechada-rec-nao" name="tampa-fechada-rec" value="NÃO">
+                                    <label for="tampa-fechada-rec-nao">NÃO</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="checkbox-item">
+                            <label>As válvulas estão fechadas e lacradas?</label>
+                            <div class="radio-group">
+                                <div class="radio-option">
+                                    <input type="radio" id="valvulas-fechadas-rec-sim" name="valvulas-fechadas-rec" value="SIM">
+                                    <label for="valvulas-fechadas-rec-sim">SIM</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="valvulas-fechadas-rec-nao" name="valvulas-fechadas-rec" value="NÃO">
+                                    <label for="valvulas-fechadas-rec-nao">NÃO</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="checkbox-item">
+                            <label>A validade dos testes (carga/hidrostático) é superior a 90 dias?</label>
+                            <div class="radio-group">
+                                <div class="radio-option">
+                                    <input type="radio" id="validade-testes-rec-sim" name="validade-testes-rec" value="SIM">
+                                    <label for="validade-testes-rec-sim">SIM</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="validade-testes-rec-nao" name="validade-testes-rec" value="NÃO">
+                                    <label for="validade-testes-rec-nao">NÃO</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="checkbox-item">
+                            <label>As etiquetas de identificação estão em bom estado?</label>
+                            <div class="radio-group">
+                                <div class="radio-option">
+                                    <input type="radio" id="etiquetas-identificacao-rec-sim" name="etiquetas-identificacao-rec" value="SIM">
+                                    <label for="etiquetas-identificacao-rec-sim">SIM</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="etiquetas-identificacao-rec-nao" name="etiquetas-identificacao-rec" value="NÃO">
+                                    <label for="etiquetas-identificacao-rec-nao">NÃO</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="checkbox-item">
+                            <label>Lacres Intactos?</label>
+                            <div class="radio-group">
+                                <div class="radio-option">
+                                    <input type="radio" id="lacres-intactos-rec-sim" name="lacres-intactos-rec" value="SIM">
+                                    <label for="lacres-intactos-rec-sim">SIM</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="lacres-intactos-rec-nao" name="lacres-intactos-rec" value="NÃO">
+                                    <label for="lacres-intactos-rec-nao">NÃO</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 
-                <div id="container-perguntas-unificadas">
-                    <!-- As perguntas serão carregadas dinamicamente aqui -->
+                <div id="inspecao-tambores" style="display: none;">
+                    <h4>Para Tambores / IBCs</h4>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <label>As etiquetas estão legíveis e firmemente fixadas?</label>
+                            <div class="radio-group">
+                                <div class="radio-option">
+                                    <input type="radio" id="etiquetas-legiveis-rec-sim" name="etiquetas-legiveis-rec" value="SIM">
+                                    <label for="etiquetas-legiveis-rec-sim">SIM</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="etiquetas-legiveis-rec-nao" name="etiquetas-legiveis-rec" value="NÃO">
+                                    <label for="etiquetas-legiveis-rec-nao">NÃO</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="checkbox-item">
+                            <label>Os recipientes estão limpos e livres de amassamentos?</label>
+                            <div class="radio-group">
+                                <div class="radio-option">
+                                    <input type="radio" id="recipientes-limpos-rec-sim" name="recipientes-limpos-rec" value="SIM">
+                                    <label for="recipientes-limpos-rec-sim">SIM</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="recipientes-limpos-rec-nao" name="recipientes-limpos-rec" value="NÃO">
+                                    <label for="recipientes-limpos-rec-nao">NÃO</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="checkbox-item">
+                            <label>A quantidade recebida confere com a nota fiscal?</label>
+                            <div class="radio-group">
+                                <div class="radio-option">
+                                    <input type="radio" id="quantidade-conferente-rec-sim" name="quantidade-conferente-rec" value="SIM">
+                                    <label for="quantidade-conferente-rec-sim">SIM</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="quantidade-conferente-rec-nao" name="quantidade-conferente-rec" value="NÃO">
+                                    <label for="quantidade-conferente-rec-nao">NÃO</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="checkbox-item">
+                            <label>Há sinais de vazamento ou corrosão?</label>
+                            <div class="radio-group">
+                                <div class="radio-option">
+                                    <input type="radio" id="sinais-vazamento-corrosao-rec-sim" name="sinais-vazamento-corrosao-rec" value="SIM">
+                                    <label for="sinais-vazamento-corrosao-rec-sim">SIM</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="sinais-vazamento-corrosao-rec-nao" name="sinais-vazamento-corrosao-rec" value="NÃO">
+                                    <label for="sinais-vazamento-corrosao-rec-nao">NÃO</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Seção de Inspeção Pré-Expedição -->
+            <div class="form-section" id="secao-inspecao-expedicao" style="display: none;">
+                <h3>Inspeção Pré-Expedição</h3>
+                <div id="inspecao-exp-contentores">
+                    <h4>Para Contentores</h4>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <label>O contentor está limpo e seco internamente?</label>
+                            <div class="radio-group">
+                                <div class="radio-option">
+                                    <input type="radio" id="contentor-limpo-exp-sim" name="contentor-limpo-exp" value="SIM">
+                                    <label for="contentor-limpo-exp-sim">SIM</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="contentor-limpo-exp-nao" name="contentor-limpo-exp" value="NÃO">
+                                    <label for="contentor-limpo-exp-nao">NÃO</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="checkbox-item">
+                            <label>Todas as tampas e válvulas estão perfeitamente fechadas?</label>
+                            <div class="radio-group">
+                                <div class="radio-option">
+                                    <input type="radio" id="tampas-valvulas-fechadas-exp-sim" name="tampas-valvulas-fechadas-exp" value="SIM">
+                                    <label for="tampas-valvulas-fechadas-exp-sim">SIM</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="tampas-valvulas-fechadas-exp-nao" name="tampas-valvulas-fechadas-exp" value="NÃO">
+                                    <label for="tampas-valvulas-fechadas-exp-nao">NÃO</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="checkbox-item">
+                            <label>Os lacres de segurança estão aplicados e intactos?</label>
+                            <div class="radio-group">
+                                <div class="radio-option">
+                                    <input type="radio" id="lacres-seguranca-exp-sim" name="lacres-seguranca-exp" value="SIM">
+                                    <label for="lacres-seguranca-exp-sim">SIM</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="lacres-seguranca-exp-nao" name="lacres-seguranca-exp" value="NÃO">
+                                    <label for="lacres-seguranca-exp-nao">NÃO</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="checkbox-item">
+                            <label>As etiquetas de risco e identificação do produto estão corretas e visíveis?</label>
+                            <div class="radio-group">
+                                <div class="radio-option">
+                                    <input type="radio" id="etiquetas-risco-exp-sim" name="etiquetas-risco-exp" value="SIM">
+                                    <label for="etiquetas-risco-exp-sim">SIM</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="etiquetas-risco-exp-nao" name="etiquetas-risco-exp" value="NÃO">
+                                    <label for="etiquetas-risco-exp-nao">NÃO</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="checkbox-item">
+                            <label>A documentação (ficha de emergência, etc.) está acomodada no local adequado?</label>
+                            <div class="radio-group">
+                                <div class="radio-option">
+                                    <input type="radio" id="documentacao-acomodada-exp-sim" name="documentacao-acomodada-exp" value="SIM">
+                                    <label for="documentacao-acomodada-exp-sim">SIM</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="documentacao-acomodada-exp-nao" name="documentacao-acomodada-exp" value="NÃO">
+                                    <label for="documentacao-acomodada-exp-nao">NÃO</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="inspecao-exp-tambores" style="display: none;">
+                    <h4>Para Tambores / IBCs</h4>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <label>As etiquetas estão legíveis e firmemente fixadas?</label>
+                            <div class="radio-group">
+                                <div class="radio-option">
+                                    <input type="radio" id="etiquetas-legiveis-exp-sim" name="etiquetas-legiveis-exp" value="SIM">
+                                    <label for="etiquetas-legiveis-exp-sim">SIM</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="etiquetas-legiveis-exp-nao" name="etiquetas-legiveis-exp" value="NÃO">
+                                    <label for="etiquetas-legiveis-exp-nao">NÃO</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="checkbox-item">
+                            <label>Os recipientes estão estáveis e paletizados corretamente?</label>
+                            <div class="radio-group">
+                                <div class="radio-option">
+                                    <input type="radio" id="recipientes-estaveis-exp-sim" name="recipientes-estaveis-exp" value="SIM">
+                                    <label for="recipientes-estaveis-exp-sim">SIM</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="recipientes-estaveis-exp-nao" name="recipientes-estaveis-exp" value="NÃO">
+                                    <label for="recipientes-estaveis-exp-nao">NÃO</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="checkbox-item">
+                            <label>Há danos que possam comprometer o transporte?</label>
+                            <div class="radio-group">
+                                <div class="radio-option">
+                                    <input type="radio" id="danos-transporte-exp-sim" name="danos-transporte-exp" value="SIM">
+                                    <label for="danos-transporte-exp-sim">SIM</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="danos-transporte-exp-nao" name="danos-transporte-exp" value="NÃO">
+                                    <label for="danos-transporte-exp-nao">NÃO</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="checkbox-item">
+                            <label>A quantidade a ser expedida confere com o pedido?</label>
+                            <div class="radio-group">
+                                <div class="radio-option">
+                                    <input type="radio" id="quantidade-expedida-exp-sim" name="quantidade-expedida-exp" value="SIM">
+                                    <label for="quantidade-expedida-exp-sim">SIM</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="quantidade-expedida-exp-nao" name="quantidade-expedida-exp" value="NÃO">
+                                    <label for="quantidade-expedida-exp-nao">NÃO</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             
@@ -603,15 +804,15 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>Status da Operação: <span style="color: var(--danger-color)">*</span></label>
+                    <label>Status da Operação:</label>
                     <div class="radio-group">
                         <div class="radio-option">
                             <input type="radio" id="status-aprovado-liberada" name="status-operacao" value="APROVADO/LIBERADA" required>
                             <label for="status-aprovado-liberada">APROVADO/LIBERADA</label>
                         </div>
                         <div class="radio-option">
-                            <input type="radio" id="status-reprovado-bloqueada" name="status-operacao" value="REPROVADO">
-                            <label for="status-reprovado-bloqueada">REPROVADO</label>
+                            <input type="radio" id="status-reprovado-bloqueada" name="status-operacao" value="REPROVADO/BLOQUEADA">
+                            <label for="status-reprovado-bloqueada">REPROVADO/BLOQUEADA</label>
                         </div>
                     </div>
                 </div>
@@ -649,7 +850,7 @@
             
             <div class="filters">
                 <div class="filter-group">
-                    <label for="filter-type">Fluxo:</label>
+                    <label for="filter-type">Tipo:</label>
                     <select id="filter-type">
                         <option value="all">Todos</option>
                         <option value="Recebimento">Recebimento</option>
@@ -660,8 +861,10 @@
                     <label for="filter-status">Status:</label>
                     <select id="filter-status">
                         <option value="all">Todos</option>
-                        <option value="APROVADO/LIBERADA">Aprovado/Liberada</option>
+                        <option value="APROVADO">Aprovado</option>
                         <option value="REPROVADO">Reprovado</option>
+                        <option value="LIBERADA">Liberada</option>
+                        <option value="BLOQUEADA">Bloqueada</option>
                     </select>
                 </div>
                 <div class="filter-group">
@@ -681,19 +884,6 @@
         </div>
     </div>
 
-    <!-- Rodapé com informações do desenvolvedor -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="developer-info">
-                <div class="developer-credits">
-                    <div class="developer-name">Desenvolvido por Aldemir Garbino</div>
-                    <div class="ai-developed">Sistema criado com assistência de Inteligência Artificial</div>
-                </div>
-                <div class="version">Versão 2.0 - 2025</div>
-            </div>
-        </div>
-    </footer>
-
     <script>
         // Variáveis para armazenar os dados
         let checklists = [];
@@ -701,43 +891,6 @@
         
         // Chave para armazenamento local
         const STORAGE_KEY = 'checklistDigitalData';
-
-        // Base de dados de perguntas unificadas
-        const perguntasDatabase = {
-    recebimento: {
-        contentores: [
-            "O contentor está limpo e seco internamente?",
-            "Todas as tampas e válvulas estão perfeitamente fechadas?",
-            "Os lacres de segurança estão aplicados e intactos?",
-            "As etiquetas de risco e identificação do produto estão corretas e visíveis?",
-            "A documentação (ficha de emergência, etc.) está acomodada no local adequado?"
-        ],
-        "tambores-ibcs": [
-            "As etiquetas estão legíveis e firmemente fixadas?",
-            "Os recipientes estão estáveis e paletizados corretamente?",
-            "Há danos que possam comprometer o transporte?",
-            "A quantidade a ser expedida confere com o pedido?"
-        ]
-    },
-    expedicao: {
-        contentores: [
-            "As eslingas estão livres de torções ou dobras?",
-            "O contentor está livre de objetos soltos, que podem cair durante a movimentação de carga?",
-            "O contentor está livre de sinais de vazamento?",
-            "A tampa está devidamente fechada?",
-            "As válvulas estão fechadas e lacradas?",
-            "A validade dos testes (carga/hidrostático) é superior a 90 dias?",
-            "As etiquetas de identificação estão em bom estado?",
-            "Lacres Intactos?"
-        ],
-        "tambores-ibcs": [
-            "As etiquetas estão legíveis e firmemente fixadas?",
-            "Os recipientes estão limpos e livres de amassamentos?",
-            "A quantidade recebida confere com a nota fiscal?",
-            "Há sinais de vazamento ou corrosão?"
-        ]
-    }
-};
        
         // Função para salvar dados no localStorage
         function saveToLocalStorage() {
@@ -822,12 +975,12 @@
             
             // Alternar entre tipos de carga
             document.getElementById('tipo-carga').addEventListener('change', function() {
-                carregarPerguntasUnificadas();
+                toggleCargaType(this.value);
             });
             
-            // Alternar entre fluxos de operação
-            document.getElementById('fluxo-operacao').addEventListener('change', function() {
-                carregarPerguntasUnificadas();
+            // Alternar entre tipos de operação
+            document.getElementById('tipo-operacao').addEventListener('change', function() {
+                toggleOperacaoType(this.value);
             });
             
             // Adicionar fotos
@@ -860,48 +1013,6 @@
                 clearAllData();
             });
         }
-
-        // NOVA FUNÇÃO: Carregar perguntas unificadas
-        function carregarPerguntasUnificadas() {
-            const container = document.getElementById('container-perguntas-unificadas');
-            const fluxo = document.getElementById('fluxo-operacao').value;
-            const tipoCarga = document.getElementById('tipo-carga').value;
-            
-            container.innerHTML = '';
-            
-            if (!fluxo || !tipoCarga) {
-                container.innerHTML = '<p style="text-align: center; color: var(--dark-gray); font-style: italic;">Selecione o fluxo e tipo de carga para carregar as perguntas</p>';
-                return;
-            }
-            
-            const perguntas = perguntasDatabase[fluxo]?.[tipoCarga] || [];
-            
-            if (perguntas.length === 0) {
-                container.innerHTML = '<p style="text-align: center; color: var(--dark-gray); font-style: italic;">Nenhuma pergunta encontrada para esta combinação</p>';
-                return;
-            }
-            
-            perguntas.forEach((pergunta, index) => {
-                const perguntaItem = document.createElement('div');
-                perguntaItem.className = 'pergunta-item';
-                perguntaItem.innerHTML = `
-                    <div class="pergunta-fluxo">${fluxo === 'recebimento' ? 'RECEBIMENTO' : 'EXPEDIÇÃO'}</div>
-                    <div class="pergunta-categoria">${tipoCarga === 'contentores' ? 'Contentores' : 'Tambores/IBCs'}</div>
-                    <div class="pergunta-texto">${pergunta}</div>
-                    <div class="radio-group">
-                        <div class="radio-option">
-                            <input type="radio" id="pergunta-${index}-sim" name="pergunta-${index}" value="SIM" required>
-                            <label for="pergunta-${index}-sim">SIM</label>
-                        </div>
-                        <div class="radio-option">
-                            <input type="radio" id="pergunta-${index}-nao" name="pergunta-${index}" value="NÃO">
-                            <label for="pergunta-${index}-nao">NÃO</label>
-                        </div>
-                    </div>
-                `;
-                container.appendChild(perguntaItem);
-            });
-        }
         
         // Alternar entre abas
         function switchTab(tabId) {
@@ -924,6 +1035,43 @@
             // Se for a aba de histórico, atualizar a lista
             if (tabId === 'historico') {
                 updateHistoryList();
+            }
+        }
+        
+        // Alternar entre tipos de carga
+        function toggleCargaType(tipoCarga) {
+            if (tipoCarga === 'contentores') {
+                document.getElementById('inspecao-contentores').style.display = 'block';
+                document.getElementById('inspecao-tambores').style.display = 'none';
+                document.getElementById('inspecao-exp-contentores').style.display = 'block';
+                document.getElementById('inspecao-exp-tambores').style.display = 'none';
+            } else if (tipoCarga === 'tambores-ibcs') {
+                document.getElementById('inspecao-contentores').style.display = 'none';
+                document.getElementById('inspecao-tambores').style.display = 'block';
+                document.getElementById('inspecao-exp-contentores').style.display = 'none';
+                document.getElementById('inspecao-exp-tambores').style.display = 'block';
+            } else {
+                document.getElementById('inspecao-contentores').style.display = 'none';
+                document.getElementById('inspecao-tambores').style.display = 'none';
+                document.getElementById('inspecao-exp-contentores').style.display = 'none';
+                document.getElementById('inspecao-exp-tambores').style.display = 'none';
+            }
+        }
+        
+        // Alternar entre tipos de operação - CORRIGIDA
+        function toggleOperacaoType(tipoOperacao) {
+            const secaoInspecaoCarga = document.getElementById('secao-inspecao-carga');
+            const secaoInspecaoExpedicao = document.getElementById('secao-inspecao-expedicao');
+            
+            if (tipoOperacao === 'recebimento') {
+                secaoInspecaoCarga.style.display = 'block';
+                secaoInspecaoExpedicao.style.display = 'none';
+            } else if (tipoOperacao === 'expedicao') {
+                secaoInspecaoCarga.style.display = 'none';
+                secaoInspecaoExpedicao.style.display = 'block';
+            } else {
+                secaoInspecaoCarga.style.display = 'block';
+                secaoInspecaoExpedicao.style.display = 'block';
             }
         }
         
@@ -969,7 +1117,7 @@
         // LIMPAR FORMULÁRIO
         function clearForm() {
             // Reset do formulário
-            const form = document.getElementById('checklist');
+            const form = document.getElementById('recebimento-expedicao');
             const formElements = form.querySelectorAll('input, select, textarea');
             
             formElements.forEach(element => {
@@ -988,9 +1136,12 @@
             // Limpar fotos
             document.getElementById('fotos').innerHTML = '';
             
-            // Limpar perguntas
-            document.getElementById('container-perguntas-unificadas').innerHTML = 
-                '<p style="text-align: center; color: var(--dark-gray); font-style: italic;">Selecione o fluxo e tipo de carga para carregar as perguntas</p>';
+            // Resetar exibição dos tipos de carga
+            document.getElementById('inspecao-contentores').style.display = 'none';
+            document.getElementById('inspecao-tambores').style.display = 'none';
+            document.getElementById('inspecao-exp-contentores').style.display = 'none';
+            document.getElementById('inspecao-exp-tambores').style.display = 'none';
+            document.getElementById('tipo-carga').value = '';
             
             showNotification('Formulário limpo com sucesso!');
         }
@@ -1014,7 +1165,7 @@
                 // Salvar no localStorage
                 saveToLocalStorage();
                 
-                // Atualizar histórico
+                // Atualizar histórico (em vez de adicionar diretamente)
                 updateHistoryList();
                 
                 showNotification(`Checklist de ${checklistData.tipo} salvo com sucesso!`);
@@ -1030,7 +1181,7 @@
         
         // Validar formulário
         function validateForm() {
-            const form = document.getElementById('checklist');
+            const form = document.getElementById('recebimento-expedicao');
             
             // Validar campos obrigatórios básicos
             const requiredFields = form.querySelectorAll('[required]');
@@ -1041,15 +1192,17 @@
                 }
             }
             
-            // Validar fluxo selecionado
-            const fluxo = document.getElementById('fluxo-operacao').value;
-            if (!fluxo) {
-                showNotification('Selecione o fluxo da operação!', 'error');
+            // Validar tipo de operação selecionado
+            const tipoOperacao = document.getElementById('tipo-operacao').value;
+            
+            if (!tipoOperacao) {
+                showNotification('Selecione o tipo de operação!', 'error');
                 return false;
             }
             
             // Validar tipo de carga selecionado
             const tipoCarga = document.getElementById('tipo-carga').value;
+            
             if (!tipoCarga) {
                 showNotification('Selecione o tipo de carga!', 'error');
                 return false;
@@ -1057,30 +1210,19 @@
             
             // Validar status selecionado
             const statusSelected = form.querySelector('input[name="status-operacao"]:checked');
+            
             if (!statusSelected) {
                 showNotification('Selecione o status!', 'error');
                 return false;
             }
             
-            // Validar se todas as perguntas foram respondidas
-            const container = document.getElementById('container-perguntas-unificadas');
-            const perguntas = container.querySelectorAll('.pergunta-item');
-            for (let pergunta of perguntas) {
-                const resposta = pergunta.querySelector('input[type="radio"]:checked');
-                if (!resposta) {
-                    showNotification('Responda todas as perguntas do checklist!', 'error');
-                    pergunta.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    return false;
-                }
-            }
-            
             return true;
         }
         
-        // Coletar dados do formulário - ATUALIZADA
+        // Coletar dados do formulário - CORRIGIDA
         function collectChecklistData() {
             const id = 'CHK' + Date.now();
-            const fluxo = document.getElementById('fluxo-operacao').value;
+            const tipoOperacao = document.getElementById('tipo-operacao').value;
             const data = document.getElementById('data').value;
             const responsavel = document.getElementById('responsavel').value;
             const tipoCarga = document.getElementById('tipo-carga').value;
@@ -1097,16 +1239,31 @@
             const status = document.querySelector('input[name="status-operacao"]:checked')?.value || 'NÃO DEFINIDO';
             const observacoes = document.getElementById('observacoes-finais').value;
             
-            // Coletar respostas das perguntas unificadas
+            // Coletar respostas das perguntas - CORRIGIDA: apenas perguntas visíveis
             const respostas = {};
-            const container = document.getElementById('container-perguntas-unificadas');
-            const perguntas = container.querySelectorAll('.pergunta-item');
+            const tipoOperacaoAtual = document.getElementById('tipo-operacao').value;
             
-            perguntas.forEach((perguntaItem, index) => {
-                const perguntaTexto = perguntaItem.querySelector('.pergunta-texto').textContent;
-                const resposta = perguntaItem.querySelector('input[type="radio"]:checked')?.value || 'NÃO RESPONDIDO';
-                respostas[perguntaTexto] = resposta;
-            });
+            if (tipoOperacaoAtual === 'recebimento') {
+                // Coletar apenas perguntas de recebimento
+                const perguntasRec = document.querySelectorAll('#secao-inspecao-carga .checkbox-item');
+                perguntasRec.forEach((pergunta) => {
+                    if (pergunta.offsetParent !== null) { // Verifica se está visível
+                        const label = pergunta.querySelector('label').textContent;
+                        const resposta = pergunta.querySelector('input[type="radio"]:checked')?.value || 'NÃO RESPONDIDO';
+                        respostas[label] = resposta;
+                    }
+                });
+            } else if (tipoOperacaoAtual === 'expedicao') {
+                // Coletar apenas perguntas de expedição
+                const perguntasExp = document.querySelectorAll('#secao-inspecao-expedicao .checkbox-item');
+                perguntasExp.forEach((pergunta) => {
+                    if (pergunta.offsetParent !== null) { // Verifica se está visível
+                        const label = pergunta.querySelector('label').textContent;
+                        const resposta = pergunta.querySelector('input[type="radio"]:checked')?.value || 'NÃO RESPONDIDO';
+                        respostas[label] = resposta;
+                    }
+                });
+            }
             
             // Coletar fotos
             const fotos = [];
@@ -1120,8 +1277,7 @@
             
             return {
                 id,
-                tipo: fluxo === 'recebimento' ? 'Recebimento' : 'Expedição',
-                fluxo,
+                tipo: tipoOperacao === 'recebimento' ? 'Recebimento' : 'Expedição',
                 data,
                 responsavel,
                 tipoCarga,
@@ -1362,10 +1518,10 @@
                     const dateStr = checklist.data || new Date(checklist.timestamp).toLocaleDateString('pt-BR');
                     
                     let statusClass = '';
-                    if (checklist.status === 'APROVADO/LIBERADA') {
-                        statusClass = 'status-approved';
+                    if (checklist.status === 'APROVADO' || checklist.status === 'LIBERADA') {
+                        statusClass = checklist.tipo === 'Recebimento' ? 'status-approved' : 'status-released';
                     } else {
-                        statusClass = 'status-rejected';
+                        statusClass = checklist.tipo === 'Recebimento' ? 'status-rejected' : 'status-blocked';
                     }
                     
                     historyItem.innerHTML = `
